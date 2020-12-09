@@ -31,9 +31,5 @@ export default defineConfig({
     title: false,
     baseNavigator: true,
     baseSeparator: '-'
-  },
-  // 系统变量
-  define: {
-    API_HOST: 'http://52.76.113.244',
   }
 });

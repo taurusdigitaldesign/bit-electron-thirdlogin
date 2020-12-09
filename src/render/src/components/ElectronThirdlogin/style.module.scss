@@ -1,0 +1,18 @@
+.box {
+    display: flex;
+    flex-direction: column;
+  
+    .imgDiv {
+      width: 100%;
+      line-height: 150px;
+      background-color: #fff;
+      color: #000;
+  
+      display: flex;
+      justify-content: center;
+    }
+  
+    .refresh {
+      margin-top: 16px;
+    }
+  }
