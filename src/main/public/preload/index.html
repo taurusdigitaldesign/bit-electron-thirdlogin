@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Great-Electron Service</title>
+</head>
+
+<body>
+	<script src="wasm_exec.js"></script>
+	<script>
+		if (!WebAssembly.instantiateStreaming) { // polyfill
+			WebAssembly.instantiateStreaming = async (resp, importObject) => {
+				const source = await (await resp).arrayBuffer();
+				return await WebAssembly.instantiate(source, importObject);
+			};
+		}
+
+		const go = new Go();
+		let mod, inst;
+		WebAssembly.instantiateStreaming(fetch("lib.wasm"), go.importObject).then(async (result) => {
+			mod = result.module;
+			inst = result.instance;
+			console.log('ok');
+			await go.run(inst);
+			inst = await WebAssembly.instantiate(mod, go.importObject);
+
+			say();
+
+		}).catch((err) => {
+			console.error(err);
+		});
+
+		
+
+	</script>
+</body>
+
+</html>
