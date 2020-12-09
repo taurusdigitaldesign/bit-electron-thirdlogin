@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Style from './style.module.scss';
 
+/**
+ * @name ElectronThirdlogin
+ * @desc
+ * Electron平台上的微信第三方登录
+ */
 const ElectronThirdlogin = (props) => {
   const [imgUrl, setImgUrl] = useState('');
 
